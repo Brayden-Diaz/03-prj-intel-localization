@@ -47,6 +47,9 @@
   align-items: stretch; /* Stretch cards to same height */
   scroll-snap-type: x mandatory; /* Enable horizontal scroll snap */
   scroll-padding: 24px; /* Padding for snap alignment */
+  max-width: 1800px; /* Maximum width for timeline container */
+  margin-left: auto; /* Center timeline container */
+  margin-right: auto; /* Center timeline container */
 }
 
 /* Milestone card styles */
@@ -141,4 +144,137 @@
     min-height: 140px; /* Slightly smaller on mobile */
     max-height: 200px;
   }
+}
+
+/* --- Custom styles for new components after the timeline section --- */
+
+/* 3-Column Content Section */
+.three-column-section {
+  background: #f4f8fb;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 48px 24px;
+  margin-bottom: 40px;
+}
+.three-column-section .col-12 {
+  background: transparent;
+  border-radius: 12px;
+  box-shadow: none;
+  padding: 24px 16px;
+}
+.three-column-section h2 {
+  color: #0071c5;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+.three-column-section p {
+  color: #222;
+  font-size: 1.08em;
+}
+.three-column-section .btn {
+  background: #0071c5;
+  border: none;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.three-column-section .btn:hover {
+  background: #005fa3;
+}
+
+/* Info Modal */
+.modal-content {
+  background: #f4f8fb;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.modal-title {
+  color: #0071c5;
+  font-weight: bold;
+}
+.modal-body {
+  color: #222;
+  font-size: 1.08em;
+}
+
+/* FAQ Accordion */
+.sustainability-faq-section {
+  background: #f4f8fb;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 48px 24px;
+  margin-bottom: 40px;
+}
+#sustainabilityAccordion .accordion-item {
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,113,197,0.10);
+}
+#sustainabilityAccordion .accordion-button {
+  background: #eaf3fa;
+  color: #0071c5;
+  font-weight: 500;
+  border-radius: 12px;
+}
+#sustainabilityAccordion .accordion-button:not(.collapsed) {
+  background: #d0e6f7;
+  color: #005fa3;
+}
+#sustainabilityAccordion .accordion-body {
+  color: #222;
+  background: transparent;
+}
+
+/* Subscription Form */
+.subscription-section {
+  background: #f4f8fb;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 48px 24px;
+  margin-bottom: 40px;
+}
+.subscription-section .form-label {
+  color: #0071c5;
+  font-weight: 500;
+}
+.subscription-section .form-control {
+  border-radius: 8px;
+  border: 1px solid #d0e6f7;
+}
+.subscription-section .btn {
+  background: #0071c5;
+  border: none;
+  font-weight: 500;
+}
+.subscription-section .btn:hover {
+  background: #005fa3;
+}
+
+/* Info Modal Trigger Button */
+.info-modal-trigger {
+  background: #eaf3fa;
+  color: #0071c5;
+  font-weight: 500;
+  border: none;
+  border-radius: 24px;
+  box-shadow: 0 2px 8px rgba(0,113,197,0.10);
+  margin-bottom: 32px;
+}
+.info-modal-trigger:hover {
+  background: #d0e6f7;
+  color: #005fa3;
+}
+
+/* Footer */
+footer {
+  background: #eaf3fa !important;
+  color: #222;
+  border-top: 2px solid #d0e6f7;
+}
+footer .nav-link {
+  color: #0071c5 !important;
+}
+footer .nav-link:hover {
+  color: #005fa3 !important;
 }
