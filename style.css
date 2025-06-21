@@ -1,280 +1,367 @@
-/* Add your CSS here */
-
 /* Style for the hero header */
 .hero {
-  display: flex; /* Use Flexbox for layout */
-  flex-direction: column; /* Stack items vertically */
-  align-items: center; /* Center items horizontally */
-  justify-content: center; /* Center items vertically */
-  background-color: #0071c5; /* Intel brand blue */
-  color: white; /* White text for contrast */
-  padding: 80px 40px; /* Space around the content */
-  position: relative; /* For positioning logo if needed */
-  text-align: center; /* Center text inside flex items */
+  display: flex;
+  /* Use Flexbox for layout */
+  flex-direction: column;
+  /* Stack items vertically */
+  align-items: center;
+  /* Center items horizontally */
+  justify-content: center;
+  /* Center items vertically */
+  background-color: #0071c5;
+  /* Intel brand blue */
+  color: white;
+  /* White text for contrast */
+  padding: 80px 40px;
+  /* Space around the content */
+  position: relative;
+  /* For positioning logo if needed */
+  text-align: center;
+  /* Center text inside flex items */
 }
 
 /* Style for the Intel logo */
 .intel-logo {
-  width: 120px; /* Set logo width */
-  height: auto; /* Keep logo proportions */
-  margin-bottom: 20px; /* Space below the logo */
-  align-self: center; /* Center logo in flex container */
+  width: 120px;
+  /* Set logo width */
+  height: auto;
+  /* Keep logo proportions */
+  margin-bottom: 20px;
+  /* Space below the logo */
+  align-self: center;
+  /* Center logo in flex container */
 }
 
 /* Style for the main headline */
 .hero-headline {
-  font-size: 2em; /* Larger text for headline */
-  margin: 10px 0; /* Space above and below */
-  font-weight: bold; /* Make headline bold */
-  align-self: center; /* Center headline in flex container */
+  font-size: 2.4em;
+  /* Larger text for headline */
+  margin: 10px 0;
+  /* Space above and below */
+  font-weight: bold;
+  /* Make headline bold */
+  align-self: center;
+  /* Center headline in flex container */
 }
 
 /* Style for the subheading */
 .hero-subheading {
-  font-size: 1.2em; /* Slightly larger than normal text */
-  margin: 0; /* Remove default margin */
-  opacity: 0.9; /* Slightly lighter for contrast */
-  align-self: center; /* Center subheading in flex container */
+  font-size: 1.44em;
+  /* Slightly larger than normal text */
+  margin: 0;
+  /* Remove default margin */
+  opacity: 0.9;
+  /* Slightly lighter for contrast */
+  align-self: center;
+  /* Center subheading in flex container */
+}
+
+:root {
+  --cards-per-view: 4;
+  /* default on large screens            */
+  --gap: 24px;
+  /* matches the `.timeline` gap already */
 }
 
 /* Timeline section styles */
 .timeline {
-  display: flex; /* Use Flexbox for layout */
-  flex-direction: row; /* Horizontal by default */
-  overflow-x: auto; /* Enable horizontal scroll on large screens */
-  gap: 24px; /* Space between milestone cards */
-  padding: 32px 0; /* Space above and below timeline */
-  align-items: stretch; /* Stretch cards to same height */
-  scroll-snap-type: x mandatory; /* Enable horizontal scroll snap */
-  scroll-padding: 24px; /* Padding for snap alignment */
-  max-width: 1800px; /* Maximum width for timeline container */
-  margin-left: auto; /* Center timeline container */
-  margin-right: auto; /* Center timeline container */
+  display: flex;                 /* existing */
+  flex-direction: row;           /* existing */
+  gap: var(--gap);
+  overflow-x: auto;
+  /* ✱ NEW: add responsive side padding + centring */
+  padding: 32px clamp(16px, 4vw, 64px);   /* top/bot 32 px; sides scale 16 px → 64 px */
+  margin: 0 auto;                           /* centre the whole strip */
+  align-items: stretch;         /* existing */
+  scroll-snap-type: x mandatory;
+  scroll-padding: var(--gap);
+    flex: 0 0 calc((100% - (var(--cards-per-view) - 1) * var(--gap)) / var(--cards-per-view));
+  /* ← dynamic width */
 }
+
 
 /* Milestone card styles */
 .milestone {
-  display: flex; /* Use Flexbox for card layout */
-  flex-direction: column; /* Stack image and text vertically by default */
-  align-items: stretch; /* Stretch children to fill width */
-  background: #f4f8fb; /* Light Intel blue background */
-  color: #222; /* Dark text for readability */
-  border-radius: 12px; /* Rounded corners */
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07); /* Soft shadow */
-  padding: 80px 56px; /* Space inside card */
-  min-width: 320px; /* Minimum width for horizontal scroll */
-  max-width: 400px; /* Maximum width for card */
-  font-family: Arial, Helvetica, sans-serif; /* Consistent font */
-  position: relative; /* For hover details */
-  transition: box-shadow 0.3s, transform 0.3s; /* Smooth transitions */
-  scroll-snap-align: start; /* Snap each card to start */
+  display: flex;
+  /* Use Flexbox for card layout */
+  flex-direction: column;
+  /* Stack image and text vertically by default */
+  align-items: stretch;
+  /* Stretch children to fill width */
+  background: #f4f8fb;
+  /* Light Intel blue background */
+  color: #222;
+  /* Dark text for readability */
+  border-radius: 12px;
+  /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  /* Soft shadow */
+  padding: 80px 56px;
+  /* Space inside card */
+  font-family: Arial, Helvetica, sans-serif;
+  /* Consistent font */
+  position: relative;
+  /* For hover details */
+  transition: box-shadow 0.3s, transform 0.3s;
+  /* Smooth transitions */
+  scroll-snap-align: start;
+  /* Snap each card to start */
   will-change: transform;
+  flex: 0 0 calc((100% - (var(--cards-per-view) - 1) * var(--gap)) / var(--cards-per-view));
+  /* ← dynamic width */
+  max-width: 400px;
+  /* optional: don’t let them get too huge */
+  min-width: 280px;
+  /* optional: don’t let them get unreadably small */
 }
 
 .milestone:hover {
-  box-shadow: 0 8px 32px rgba(0,113,197,0.18); /* Stronger shadow on hover */
-  transform: translateY(-10px) scale(1.04) rotate(-1deg); /* Subtle lift and tilt */
+  box-shadow: 0 8px 32px rgba(0, 113, 197, 0.18);
+  /* Stronger shadow on hover */
+  transform: translateY(-10px) scale(1.04) rotate(-1deg);
+  /* Subtle lift and tilt */
 }
 
 /* Add a class for the active (clicked) state */
-.milestone.active, .milestone:focus {
-  box-shadow: 0 8px 32px rgba(0,113,197,0.18);
+.milestone.active,
+.milestone:focus {
+  box-shadow: 0 8px 32px rgba(0, 113, 197, 0.18);
   transform: translateY(-10px) scale(1.04) rotate(-1deg);
 }
-.milestone.active .milestone-img-wrapper img, .milestone:focus .milestone-img-wrapper img {
+
+.milestone.active .milestone-img-wrapper img,
+.milestone:focus .milestone-img-wrapper img {
   transform: scale(1.05) rotate(1deg);
 }
-.milestone.active .milestone-details, .milestone:focus .milestone-details {
+
+.milestone.active .milestone-details,
+.milestone:focus .milestone-details {
   display: block;
 }
 
 /* Hidden details, shown on hover */
 .milestone-details {
-  display: none; /* Hide by default */
+  display: none;
+  /* Hide by default */
   margin-top: 12px;
-  color: #0071c5; /* Intel blue for details */
-  font-size: 0.98em;
+  color: #0071c5;
+  /* Intel blue for details */
+  font-size: 1.176em;
 }
 
 .milestone:hover .milestone-details {
-  display: block; /* Show details on hover */
+  display: block;
+  /* Show details on hover */
 }
 
 /* Milestone image wrapper styles */
 .milestone-img-wrapper {
-  flex: 2 1 200px; /* Take up more space for bigger images */
+  flex: 2 1 200px;
+  /* Take up more space for bigger images */
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 16px;
-  min-height: 180px; /* Increase minimum height for bigger images */
-  max-height: 260px; /* Optional: set a max height */
+  min-height: 180px;
+  /* Increase minimum height for bigger images */
+  max-height: 260px;
+  /* Optional: set a max height */
 }
 
 /* Milestone image styles */
 .milestone-img-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Fill the area, cropping if needed */
+  object-fit: cover;
+  /* Fill the area, cropping if needed */
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,113,197,0.10); /* Subtle image shadow */
+  box-shadow: 0 2px 8px rgba(0, 113, 197, 0.10);
+  /* Subtle image shadow */
   transition: transform 0.3s;
 }
 
 .milestone:hover .milestone-img-wrapper img {
-  transform: scale(1.05) rotate(1deg); /* Slight zoom and tilt on image */
+  transform: scale(1.05) rotate(1deg);
+  /* Slight zoom and tilt on image */
 }
 
 /* Responsive: stack vertically on small screens */
 @media (max-width: 700px) {
   .timeline {
-    flex-direction: column; /* Stack cards vertically */
-    overflow-x: visible; /* No horizontal scroll */
+    flex-direction: column;
+    /* Stack cards vertically */
+    overflow-x: visible;
+    /* No horizontal scroll */
     gap: 20px;
-    align-items: center; /* Center cards */
-    scroll-snap-type: none; /* Disable snap on mobile */
+    align-items: center;
+    /* Center cards */
+    scroll-snap-type: none;
+    /* Disable snap on mobile */
   }
+
   .milestone {
     min-width: 0;
-    width: 90%; /* Make cards fill most of the width */
+    width: 90%;
+    /* Make cards fill most of the width */
     max-width: 400px;
-    flex-direction: column; /* Stack image and text vertically */
+    flex-direction: column;
+    /* Stack image and text vertically */
   }
+
   .milestone-img-wrapper {
-    min-height: 140px; /* Slightly smaller on mobile */
+    min-height: 140px;
+    /* Slightly smaller on mobile */
     max-height: 200px;
   }
 }
 
-/* --- Custom styles for new components after the timeline section --- */
+/* === 3-COLUMN “CARD” SECTION ===================================== */
 
-/* 3-Column Content Section */
-.three-column-section {
+.three-column-section .col-12.col-md-4 {
+  /* make the column itself look like a card */
   background: #f4f8fb;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  padding: 48px 24px;
-  margin-bottom: 40px;
-}
-.three-column-section .col-12 {
-  background: transparent;
+  color: #222;
   border-radius: 12px;
-  box-shadow: none;
-  padding: 24px 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.07);
+  padding: 3rem 2rem;
+  transition: box-shadow .3s, transform .3s;
+
+  /* CRITICAL: stack children vertically again */
+  display: flex;
+  flex-direction: column;
+  align-items: center;          /* centre icon + text */
+  text-align: center;           /* centre headings & paragraphs */
 }
+
+.three-column-section .col-12.col-md-4:hover {
+  box-shadow: 0 8px 32px rgba(0,113,197,.18);
+  transform: translateY(-8px) scale(1.03);
+}
+
+/* icon block */
+.three-column-section .mb-3 {
+  margin-bottom: 1.5rem !important;
+}
+
+.three-column-section svg {
+  width: 48px;
+  height: 48px;
+  fill: #0071c5;
+}
+
+/* typography tweaks */
 .three-column-section h2 {
-  color: #0071c5;
-  font-weight: bold;
-  margin-bottom: 16px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 1rem 0 .5rem;
 }
 .three-column-section p {
-  color: #222;
-  font-size: 1.08em;
+  font-size: 1.2rem;
+  line-height: 1.5;
 }
-.three-column-section .btn {
+
+/* --- Subscription Section in 3-Column Layout --- */
+.three-column-section .subscription-section {
+  background: #f4f8fb;
+  color: #222;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.07);
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  /* Prevent hover transform like other columns */
+  transition: none;
+}
+
+.three-column-section .subscription-section:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,.07);
+  transform: none;
+}
+
+/* Style the form fields and button to match the card look */
+.three-column-section .subscription-section form {
+  width: 100%;
+  max-width: 350px;
+}
+
+.three-column-section .subscription-section .form-label {
+  color: #0071c5;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.three-column-section .subscription-section .form-control {
+  border-radius: 8px;
+  border: 1px solid #d0e6f7;
+  background: #fff;
+  color: #222;
+  box-shadow: none;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.three-column-section .subscription-section .form-control:focus {
+  border-color: #0071c5;
+  box-shadow: 0 0 0 2px #d0e6f7;
+}
+
+.three-column-section .btn-primary {
   background: #0071c5;
   border: none;
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  border-radius: 999px;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  transition: background 0.2s;
+  font-size: 1.2rem;
 }
-.three-column-section .btn:hover {
+
+.three-column-section .btn-primary:hover,
+.three-column-section .btn-primary:focus {
   background: #005fa3;
 }
 
-/* Info Modal */
-.modal-content {
+/* === FAQ + MODAL ============================================ */
+.sustainability-faq-section {
+  /* card styling */
   background: #f4f8fb;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-}
-.modal-title {
-  color: #0071c5;
-  font-weight: bold;
-}
-.modal-body {
-  color: #222;
-  font-size: 1.08em;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.07);
+  padding: 3rem 1.5rem;
+  font-size: 1.2em;
 }
 
-/* FAQ Accordion */
-.sustainability-faq-section {
-  background: #f4f8fb;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  padding: 48px 24px;
-  margin-bottom: 40px;
-}
 #sustainabilityAccordion .accordion-item {
-  background: transparent;
   border: none;
-  border-radius: 12px;
-  margin-bottom: 12px;
-  box-shadow: 0 2px 8px rgba(0,113,197,0.10);
+  margin-bottom: .75rem;
 }
 #sustainabilityAccordion .accordion-button {
   background: #eaf3fa;
   color: #0071c5;
-  font-weight: 500;
-  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 #sustainabilityAccordion .accordion-button:not(.collapsed) {
   background: #d0e6f7;
   color: #005fa3;
 }
-#sustainabilityAccordion .accordion-body {
-  color: #222;
-  background: transparent;
-}
 
-/* Subscription Form */
-.subscription-section {
+.modal-content {
   background: #f4f8fb;
-  border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  padding: 48px 24px;
-  margin-bottom: 40px;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,.15);
 }
-.subscription-section .form-label {
-  color: #0071c5;
-  font-weight: 500;
-}
-.subscription-section .form-control {
-  border-radius: 8px;
-  border: 1px solid #d0e6f7;
-}
-.subscription-section .btn {
-  background: #0071c5;
-  border: none;
-  font-weight: 500;
-}
-.subscription-section .btn:hover {
-  background: #005fa3;
-}
+.modal-title   { color: #0071c5; font-weight: 700; font-size: 1.44rem; }
+.modal-body    { color: #222;   font-size: 1.2rem; }
+.modal-footer  { border-top: none; font-size: 1.2rem; }
 
-/* Info Modal Trigger Button */
-.info-modal-trigger {
-  background: #eaf3fa;
-  color: #0071c5;
-  font-weight: 500;
-  border: none;
-  border-radius: 24px;
-  box-shadow: 0 2px 8px rgba(0,113,197,0.10);
-  margin-bottom: 32px;
-}
-.info-modal-trigger:hover {
-  background: #d0e6f7;
-  color: #005fa3;
-}
+/* === FOOTER ============================================ */
 
-/* Footer */
 footer {
-  background: #eaf3fa !important;
-  color: #222;
+  background: #eaf3fa;
   border-top: 2px solid #d0e6f7;
+  font-size: 1.14rem;
 }
-footer .nav-link {
-  color: #0071c5 !important;
-}
-footer .nav-link:hover {
-  color: #005fa3 !important;
-}
+footer .nav-link       { color: #0071c5 !important; font-size: 1.14rem; }
+footer .nav-link:hover { color: #005fa3 !important; text-decoration: underline; }
