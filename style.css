@@ -1,0 +1,144 @@
+/* Add your CSS here */
+
+/* Style for the hero header */
+.hero {
+  display: flex; /* Use Flexbox for layout */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  background-color: #0071c5; /* Intel brand blue */
+  color: white; /* White text for contrast */
+  padding: 80px 40px; /* Space around the content */
+  position: relative; /* For positioning logo if needed */
+  text-align: center; /* Center text inside flex items */
+}
+
+/* Style for the Intel logo */
+.intel-logo {
+  width: 120px; /* Set logo width */
+  height: auto; /* Keep logo proportions */
+  margin-bottom: 20px; /* Space below the logo */
+  align-self: center; /* Center logo in flex container */
+}
+
+/* Style for the main headline */
+.hero-headline {
+  font-size: 2em; /* Larger text for headline */
+  margin: 10px 0; /* Space above and below */
+  font-weight: bold; /* Make headline bold */
+  align-self: center; /* Center headline in flex container */
+}
+
+/* Style for the subheading */
+.hero-subheading {
+  font-size: 1.2em; /* Slightly larger than normal text */
+  margin: 0; /* Remove default margin */
+  opacity: 0.9; /* Slightly lighter for contrast */
+  align-self: center; /* Center subheading in flex container */
+}
+
+/* Timeline section styles */
+.timeline {
+  display: flex; /* Use Flexbox for layout */
+  flex-direction: row; /* Horizontal by default */
+  overflow-x: auto; /* Enable horizontal scroll on large screens */
+  gap: 24px; /* Space between milestone cards */
+  padding: 32px 0; /* Space above and below timeline */
+  align-items: stretch; /* Stretch cards to same height */
+  scroll-snap-type: x mandatory; /* Enable horizontal scroll snap */
+  scroll-padding: 24px; /* Padding for snap alignment */
+}
+
+/* Milestone card styles */
+.milestone {
+  display: flex; /* Use Flexbox for card layout */
+  flex-direction: column; /* Stack image and text vertically by default */
+  align-items: stretch; /* Stretch children to fill width */
+  background: #f4f8fb; /* Light Intel blue background */
+  color: #222; /* Dark text for readability */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07); /* Soft shadow */
+  padding: 80px 56px; /* Space inside card */
+  min-width: 320px; /* Minimum width for horizontal scroll */
+  max-width: 400px; /* Maximum width for card */
+  font-family: Arial, Helvetica, sans-serif; /* Consistent font */
+  position: relative; /* For hover details */
+  transition: box-shadow 0.3s, transform 0.3s; /* Smooth transitions */
+  scroll-snap-align: start; /* Snap each card to start */
+  will-change: transform;
+}
+
+.milestone:hover {
+  box-shadow: 0 8px 32px rgba(0,113,197,0.18); /* Stronger shadow on hover */
+  transform: translateY(-10px) scale(1.04) rotate(-1deg); /* Subtle lift and tilt */
+}
+
+/* Add a class for the active (clicked) state */
+.milestone.active, .milestone:focus {
+  box-shadow: 0 8px 32px rgba(0,113,197,0.18);
+  transform: translateY(-10px) scale(1.04) rotate(-1deg);
+}
+.milestone.active .milestone-img-wrapper img, .milestone:focus .milestone-img-wrapper img {
+  transform: scale(1.05) rotate(1deg);
+}
+.milestone.active .milestone-details, .milestone:focus .milestone-details {
+  display: block;
+}
+
+/* Hidden details, shown on hover */
+.milestone-details {
+  display: none; /* Hide by default */
+  margin-top: 12px;
+  color: #0071c5; /* Intel blue for details */
+  font-size: 0.98em;
+}
+
+.milestone:hover .milestone-details {
+  display: block; /* Show details on hover */
+}
+
+/* Milestone image wrapper styles */
+.milestone-img-wrapper {
+  flex: 2 1 200px; /* Take up more space for bigger images */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  min-height: 180px; /* Increase minimum height for bigger images */
+  max-height: 260px; /* Optional: set a max height */
+}
+
+/* Milestone image styles */
+.milestone-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Fill the area, cropping if needed */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,113,197,0.10); /* Subtle image shadow */
+  transition: transform 0.3s;
+}
+
+.milestone:hover .milestone-img-wrapper img {
+  transform: scale(1.05) rotate(1deg); /* Slight zoom and tilt on image */
+}
+
+/* Responsive: stack vertically on small screens */
+@media (max-width: 700px) {
+  .timeline {
+    flex-direction: column; /* Stack cards vertically */
+    overflow-x: visible; /* No horizontal scroll */
+    gap: 20px;
+    align-items: center; /* Center cards */
+    scroll-snap-type: none; /* Disable snap on mobile */
+  }
+  .milestone {
+    min-width: 0;
+    width: 90%; /* Make cards fill most of the width */
+    max-width: 400px;
+    flex-direction: column; /* Stack image and text vertically */
+  }
+  .milestone-img-wrapper {
+    min-height: 140px; /* Slightly smaller on mobile */
+    max-height: 200px;
+  }
+}
