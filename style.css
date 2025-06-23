@@ -65,17 +65,22 @@
 
 /* Timeline section styles */
 .timeline {
-  display: flex;                 /* existing */
-  flex-direction: row;           /* existing */
+  display: flex;
+  /* existing */
+  flex-direction: row;
+  /* existing */
   gap: var(--gap);
   overflow-x: auto;
   /* ✱ NEW: add responsive side padding + centring */
-  padding: 32px clamp(16px, 4vw, 64px);   /* top/bot 32 px; sides scale 16 px → 64 px */
-  margin: 0 auto;                           /* centre the whole strip */
-  align-items: stretch;         /* existing */
+  padding: 32px clamp(16px, 4vw, 64px);
+  /* top/bot 32 px; sides scale 16 px → 64 px */
+  margin: 0 auto;
+  /* centre the whole strip */
+  align-items: stretch;
+  /* existing */
   scroll-snap-type: x mandatory;
   scroll-padding: var(--gap);
-    flex: 0 0 calc((100% - (var(--cards-per-view) - 1) * var(--gap)) / var(--cards-per-view));
+  flex: 0 0 calc((100% - (var(--cards-per-view) - 1) * var(--gap)) / var(--cards-per-view));
   /* ← dynamic width */
 }
 
@@ -222,19 +227,21 @@
   background: #f4f8fb;
   color: #222;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.07);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .07);
   padding: 3rem 2rem;
   transition: box-shadow .3s, transform .3s;
 
   /* CRITICAL: stack children vertically again */
   display: flex;
   flex-direction: column;
-  align-items: center;          /* centre icon + text */
-  text-align: center;           /* centre headings & paragraphs */
+  align-items: center;
+  /* centre icon + text */
+  text-align: center;
+  /* centre headings & paragraphs */
 }
 
 .three-column-section .col-12.col-md-4:hover {
-  box-shadow: 0 8px 32px rgba(0,113,197,.18);
+  box-shadow: 0 8px 32px rgba(0, 113, 197, .18);
   transform: translateY(-8px) scale(1.03);
 }
 
@@ -255,6 +262,7 @@
   font-weight: 700;
   margin: 1rem 0 .5rem;
 }
+
 .three-column-section p {
   font-size: 1.2rem;
   line-height: 1.5;
@@ -265,7 +273,7 @@
   background: #f4f8fb;
   color: #222;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.07);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .07);
   padding: 3rem 2rem;
   display: flex;
   flex-direction: column;
@@ -276,7 +284,7 @@
 }
 
 .three-column-section .subscription-section:hover {
-  box-shadow: 0 2px 8px rgba(0,0,0,.07);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .07);
   transform: none;
 }
 
@@ -322,46 +330,61 @@
   background: #005fa3;
 }
 
-/* === FAQ + MODAL ============================================ */
+/* === FAQ + ACCORDION SECTION ============================================ */
+.sustainability-faq-wrapper {
+  padding: 0 1rem;
+}
+
 .sustainability-faq-section {
-  /* card styling */
   background: #f4f8fb;
   border-radius: 1rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,.07);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, .07);
   padding: 3rem 1.5rem;
-  font-size: 1.2em;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.sustainability-faq-section h2 {
+  color: #0071c5;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+#sustainabilityAccordion {
+  max-width: 800px;
+  margin: 0 auto;
+  transition: height 0.4s ease;
 }
 
 #sustainabilityAccordion .accordion-item {
+  background: transparent;
   border: none;
-  margin-bottom: .75rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 113, 197, 0.10);
 }
+
 #sustainabilityAccordion .accordion-button {
   background: #eaf3fa;
   color: #0071c5;
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.3s ease;
 }
+
 #sustainabilityAccordion .accordion-button:not(.collapsed) {
   background: #d0e6f7;
   color: #005fa3;
 }
 
-.modal-content {
-  background: #f4f8fb;
-  border-radius: 1rem;
-  box-shadow: 0 2px 12px rgba(0,0,0,.15);
+#sustainabilityAccordion .accordion-body {
+  background: transparent;
+  color: #222;
+  text-align: left;
+  padding-top: 0.75rem;
 }
-.modal-title   { color: #0071c5; font-weight: 700; font-size: 1.44rem; }
-.modal-body    { color: #222;   font-size: 1.2rem; }
-.modal-footer  { border-top: none; font-size: 1.2rem; }
-
-/* === FOOTER ============================================ */
-
-footer {
-  background: #eaf3fa;
-  border-top: 2px solid #d0e6f7;
-  font-size: 1.14rem;
-}
-footer .nav-link       { color: #0071c5 !important; font-size: 1.14rem; }
-footer .nav-link:hover { color: #005fa3 !important; text-decoration: underline; }
